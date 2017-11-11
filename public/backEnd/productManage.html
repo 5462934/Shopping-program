@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>乐淘云购后台管理系统</title>
+  <!-- 引入bootstrap库 -->
+  <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">
+  <!-- 引入NProgress -->
+  <link rel="stylesheet" href="./lib/nprogress/nprogress.css">
+  <!-- 引入表单验证插件的css -->
+  <link rel="stylesheet" href="./lib/bootstrap-validator/css/bootstrapValidator.min.css">
+  <!-- 引入当前页面的css -->
+  <link rel="stylesheet" href="./css/admin.css">
+</head>
+<body>
+	<!-- 侧边栏 -->
+  <aside class="lt_aside">
+    <!-- 商标 -->
+    <div class="brand">
+      <a href="./index.html">ITCAST</a>
+    </div>
+    <!-- 头像 -->
+    <div class="user">
+      <img src="./images/default.png">
+      超级管理员
+    </div>
+
+    <!-- 列表管理 -->
+    <div class="menu">
+      <ul>
+        <li>
+          <a href="./userManage.html">
+            <i class="glyphicon glyphicon-user"></i>用户管理
+          </a>
+        </li>
+        <li>
+          <a role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            <i class="glyphicon glyphicon-list"></i>分类管理
+          </a>
+          <div class="collapse" id="collapseExample">
+              <a class="item" href="./categoryFirst.html">一级分类</a>
+              <a class="item" href="./categorySecond.html">二级分类</a>
+          </div>
+        </li>
+        <li>
+          <a href="productManage.html">
+            <i class="glyphicon glyphicon-tags"></i>商品管理
+          </a>
+        </li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- 右侧内容区 -->
+  <section class="lt_section">
+    <!-- 顶部导航栏 -->
+    <div class="topnav">
+      <a class="menu" data-menu href="javascript:;">
+        <i class="glyphicon glyphicon-align-justify"></i>
+      </a>
+      <a class="back" href="javascript:;" data-toggle="modal" data-target=".bs-example-modal-sm">
+        <i class="glyphicon glyphicon-log-out"></i>
+      </a>
+      <!-- 弹出层 -->
+        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+          <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+               <div class="modal-header">
+             	 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">温馨提示</h4>
+            </div>
+            <div class="modal-body">
+              <p><i class="glyphicon glyphicon-question-sign"></i> 您确定要退出后台管理系统吗？</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+              <a class="btn btn-primary" href="./login.html">确定</a>
+            </div>
+            </div>
+          </div>
+        </div>
+      <!-- 弹出层结束 -->
+    </div><!-- /.topnav -->
+    <!-- 内容区 -->
+    <div class="container-fluid">
+      <ol class="breadcrumb">
+        <li>
+          <a href="#">管理系统</a>
+        </li>
+        <li class="active">
+          商品管理
+        </li>
+      </ol>
+      
+      <!-- 添加分类按钮 -->
+      <button  type="button" class="btn btn-default addBtn" data-toggle="modal" data-target=".bs-example-modal-sm-sm">添加商品</button>
+
+	     <div class="modal fade bs-example-modal-sm-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+			  <div class="modal-dialog modal-sm-sm" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+             	 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">添加分类</h4>
+            </div>
+            <div class="modal-body">
+              <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+              <a class="btn btn-primary" href="./login.html">确定</a>
+            </div>
+			    </div>
+			  </div>
+			</div>
+
+      <!-- 一级分类列表 -->
+      <table class="table table-bordered">
+  			<thead>
+  				<tr>
+  					<th>序号</th>
+            <th>商品名称</th>
+            <th>商品描述</th>
+            <th>商品库存</th>
+            <th>商品尺寸</th>
+            <th>商品状态</th>
+  					<th>操作</th>
+  				</tr>
+  			</thead>
+  			<tbody>
+  				<tr>
+  					<td>1</td>
+            <td>女士馆</td>
+            <td>阿萨德</td>
+            <td>LOGO</td>
+            <td>LOGO</td>
+            <td>LOGO</td>
+	  				<td>LOGO</td>
+  				</tr>
+  				<tr>
+  					<td>1</td>
+            <td>666</td>
+            <td>666</td>
+            <td>666</td>
+            <td>666</td>
+            <td>666</td>
+	  				<td>666</td>
+  				</tr>
+  			</tbody>
+			</table>
+    </div>
+  </section>
+
+  <!-- 弹出的遮罩层 -->
+	
+	
+	<!-- 引入jQuery -->
+  <script src="./lib/jquery/jquery.min.js"></script>
+  <!-- 引入bootstrap的插件 -->
+  <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+  <!-- 引入echarts库 -->
+  <script src="./lib/echarts/echarts.min.js"></script>
+  <!-- 引入表单验证的插件-->
+  <script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
+  <!-- 引入进度条插件 -->
+  <script src="./lib/nprogress/nprogress.js"></script>
+  <!-- 引入admin文件 -->
+  <script src="./js/admin.js"></script>
+  <!-- 引入index文件 -->
+  <script src="./js/index.js"></script>
+</body>
+</html>
