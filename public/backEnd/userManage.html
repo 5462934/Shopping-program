@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -56,31 +56,12 @@
   <section class="lt_section">
   	<!-- 顶部导航栏 -->
     <div class="topnav">
-      <a class="menu" data-menu href="javascript:;">
+      <a data-menu href="javascript:;">
         <i class="glyphicon glyphicon-align-justify"></i>
       </a>
-      <a class="back" href="javascript:;" data-toggle="modal" data-target=".bs-example-modal-sm">
+      <a data-logout data-toggle="modal" href="#logout-modal">
         <i class="glyphicon glyphicon-log-out"></i>
       </a>
-      <!-- 弹出层 -->
-        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-          <div class="modal-dialog modal-sm" role="document">
-            <div class="modal-content">
-               <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title">温馨提示</h4>
-            </div>
-            <div class="modal-body">
-              <p><i class="glyphicon glyphicon-question-sign"></i> 您确定要退出后台管理系统吗？</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-              <a class="btn btn-primary" href="./login.html">确定</a>
-            </div>
-            </div>
-          </div>
-        </div>
-      <!-- 弹出层结束 -->
     </div><!-- /.topnav -->
     <!-- 内容区 -->
     <div class="container-fluid">
@@ -88,53 +69,74 @@
         <li>
           <a href="#">管理系统</a>
         </li>
-        <li class="active">
-          用户管理
-        </li>
+        <li class="active">用户管理</li>
       </ol>
       
       <div class="lt_content">
-        <div class="row">
           <!-- 用户列表 -->
-        <table class="table table-bordered border-hover">
-          <thead>
-            <tr class="text-center">
-              <th>序号</th>
-              <th>用户名</th>
-              <th>手机号</th>
-              <th>状态</th>
-              <th>操作</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="text-center">
-              <td>1</td>
-              <td>3</td>
-              <td>3</td>
-              <td>3</td>
-              <td>
-                <a href="javascript:;" class="btn btn-primary">启用</a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        </div>
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr class="text-center">
+                <th>序号</th>
+                <th>用户名</th>
+                <th>手机号</th>
+                <th>状态</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- 动态输出数据 -->
+            </tbody>
+          </table>
+          <div class="page">
+            <ul class="pagination"></ul>
+          </div>
       </div>
     </div>
   </section>
 
+
+  <!-- 弹出层 -->
+  <div class="modal fade" id="manage-modal" tabindex="-1">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">温馨提示</h4>
+          </div>
+          <div class="modal-body">
+            <p class="alert alert-danger">
+              <!-- <i class="glyphicon glyphicon-info-sign"></i> word -->
+            </p>
+  
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-primary">确定</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- 弹出层结束 -->
+
   <script type="text/template" id="usermanage-template">
-  for(var i = 0; i < rows.length; i++) {
+    <% for(var i = 0; i < rows.length; i++) { %>
     <tr class="text-center">
-     <td>(page - 1) * pageSize + 1</td>
-     <td>rows[i].username</td>
-     <td>3</td>
-     <td>3</td>
+     <td><%= (page - 1) * size + i + 1 %></td>
+     <td><%= rows[i].username %></td>
+     <td><%= rows[i].mobile %></td>
+     <td><%= rows[i].isDelete = 1 ? '禁用' : '正常' %></td>
      <td>
-       <a href="javascript:;" class="btn btn-primary">启用</a>
-     </td>
+        <% if(rows[i].isDelete == 1) { %>
+        <a data-id="<%= rows[i].id %>" data-name="<%= rows[i].username %>"  href="#manage-modal" data-toggle="modal" class="btn btn-primary">启用</a>
+        <% } else { %>
+        <a data-id="<%= rows[i].id %>" data-name="<%= rows[i].username %>" href="#manage-modal" data-toggle="modal" class="btn btn-danger">禁用</a>
+        <% } %>
+      </td>
     </tr>
-  }
+  <% } %>
     
   </script>
 
@@ -142,10 +144,12 @@
   <script src="./lib/jquery/jquery.min.js"></script>
   <!-- 引入bootstrap的插件 -->
   <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
-  <!-- 引入echarts库 -->
-  <script src="./lib/echarts/echarts.min.js"></script>
-  <!-- 引入表单验证的插件-->
+  <!-- 引入template库 -->
+  <script src="./lib/artTemplate/template-native.js"></script>
+  <!-- 引入表单验证的插件 -->
   <script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
+  <!-- 引入分页插件 -->
+  <script src="./lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
   <!-- 引入进度条插件 -->
   <script src="./lib/nprogress/nprogress.js"></script>
   <!-- 引入admin文件 -->

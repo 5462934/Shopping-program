@@ -60,28 +60,10 @@
       <a class="menu" data-menu href="javascript:;">
         <i class="glyphicon glyphicon-align-justify"></i>
       </a>
-      <a class="back" href="javascript:;" data-toggle="modal" data-target=".bs-example-modal-sm">
-        <i class="glyphicon glyphicon-log-out"></i>
-      </a>
-      <!-- 弹出层 -->
-        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-          <div class="modal-dialog modal-sm" role="document">
-            <div class="modal-content">
-               <div class="modal-header">
-             	 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title">温馨提示</h4>
-            </div>
-            <div class="modal-body">
-              <p><i class="glyphicon glyphicon-question-sign"></i> 您确定要退出后台管理系统吗？</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-              <a class="btn btn-primary" href="./login.html">确定</a>
-            </div>
-            </div>
-          </div>
-        </div>
-      <!-- 弹出层结束 -->
+      <a data-logout data-toggle="modal" href="#logout-modal">
+          <i class="glyphicon glyphicon-log-out"></i>
+     </a>
+      
     </div><!-- /.topnav -->
     <!-- 内容区 -->
     <div class="container-fluid">
@@ -96,66 +78,82 @@
           一级分类
         </li>
       </ol>
-      
-      <!-- 添加分类按钮 -->
-      <button  type="button" class="btn btn-default addBtn" data-toggle="modal" data-target=".bs-example-modal-sm-sm">添加分类</button>
-
-	     <div class="modal fade bs-example-modal-sm-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-			  <div class="modal-dialog modal-sm-sm" role="document">
-			    <div class="modal-content">
-			      <div class="modal-header">
-             	 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title">添加分类</h4>
-            </div>
-            <div class="modal-body">
-              <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-              <a class="btn btn-primary" href="./login.html">确定</a>
-            </div>
-			    </div>
-			  </div>
-			</div>
 
       <!-- 一级分类列表 -->
-      <table class="table table-bordered">
-  			<thead>
-  				<tr>
-  					<th>序号</th>
-  					<th>分类名称</th>
-  				</tr>
-  			</thead>
-  			<tbody>
-  				<tr>
-  					<td>1</td>
-	  				<td>3</td
-  				</tr>
-  				<tr>
-  					<td>1</td>
-	  				<td>666</td>
-  				</tr>
-  			</tbody>
-			</table>
+      <div class="lt_content">
+          <a href="#first-modal" data-toggle="modal" class="btn btn-default">添加分类</a>
+          <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>序号</th>
+                  <th>分类名称</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- 动态获取界面 -->
+              </tbody>
+            </table>
+      </div>
+      <div class="page">
+        <ul class="pagination"></ul>
+      </div>
     </div>
   </section>
 
-  <!-- 弹出的遮罩层 -->
-	
-	
+
+
+  <div class="modal fade" id="first-modal" tabindex="-1">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">添加分类</h4>
+          </div>
+          <div class="modal-body">
+            <form class="form-horizontal" id="first-form">
+              <div class="form-group">
+                <div class="col-sm-12">
+                  <input type="text" name="categoryName" class="form-control" id="categoryName" placeholder="输入一级分类">
+                </div>
+              </div>
+            </form>
+  
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="button" id="save" class="btn btn-primary">确定</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  <script type="text/template" id="firstTemplate">
+    <% for(var i = 0; i < rows.length; i++) { %>
+      <tr class="text-center">
+          <td><%= (page - 1) * size + i + 1 %></td>
+          <td><%= rows[i].categoryName %></td>
+      </tr>
+    <% } %>
+  </script>
 	<!-- 引入jQuery -->
   <script src="./lib/jquery/jquery.min.js"></script>
   <!-- 引入bootstrap的插件 -->
   <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
   <!-- 引入echarts库 -->
   <script src="./lib/echarts/echarts.min.js"></script>
+  <!-- 引入模板 -->
+  <script src="./lib/artTemplate/template-native.js"></script>
   <!-- 引入表单验证的插件-->
   <script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
+    <!-- 引入分页插件 -->
+    <script src="./lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
   <!-- 引入进度条插件 -->
   <script src="./lib/nprogress/nprogress.js"></script>
   <!-- 引入admin文件 -->
   <script src="./js/admin.js"></script>
   <!-- 引入index文件 -->
-  <script src="./js/index.js"></script>
+  <script src="./js/categoryFirst.js"></script>
 </body>
 </html>
