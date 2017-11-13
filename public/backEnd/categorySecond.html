@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,19 +9,20 @@
   <style>
     .fileupload {
       position: absolute;
-
     }
-    .fileupload [type="file"]{
-            width: 82px;
-            height: 34px;
-            position: absolute;
-            top: 0;
-            left: 0;
-            opacity: 0;
-     }
-     .preview {
-       margin-top: 65px;
-     }
+
+    .fileupload [type="file"] {
+      width: 82px;
+      height: 34px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+    }
+
+    .preview {
+      margin-top: 65px;
+    }
   </style>
   <!-- 引入bootstrap库 -->
   <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">
@@ -31,8 +33,9 @@
   <!-- 引入当前页面的css -->
   <link rel="stylesheet" href="./css/admin.css">
 </head>
+
 <body>
-	<!-- 侧边栏 -->
+  <!-- 侧边栏 -->
   <aside class="lt_aside">
     <!-- 商标 -->
     <div class="brand">
@@ -40,8 +43,7 @@
     </div>
     <!-- 头像 -->
     <div class="user">
-      <img src="./images/default.png">
-      超级管理员
+      <img src="./images/default.png"> 超级管理员
     </div>
 
     <!-- 列表管理 -->
@@ -57,8 +59,8 @@
             <i class="glyphicon glyphicon-list"></i>分类管理
           </a>
           <div class="collapse" id="collapseExample">
-              <a class="item" href="./categoryFirst.html">一级分类</a>
-              <a class="item" href="./categorySecond.html">二级分类</a>
+            <a class="item" href="./categoryFirst.html">一级分类</a>
+            <a class="item" href="./categorySecond.html">二级分类</a>
           </div>
         </li>
         <li>
@@ -78,9 +80,10 @@
         <i class="glyphicon glyphicon-align-justify"></i>
       </a>
       <a data-logout data-toggle="modal" href="#logout-modal">
-          <i class="glyphicon glyphicon-log-out"></i>
+        <i class="glyphicon glyphicon-log-out"></i>
       </a>
-    </div><!-- /.topnav -->
+    </div>
+    <!-- /.topnav -->
     <!-- 内容区 -->
     <div class="container-fluid">
       <ol class="breadcrumb">
@@ -90,13 +93,13 @@
         <li class="active">
           分类管理
         </li>
-         <li class="active">
+        <li class="active">
           二级分类
         </li>
       </ol>
       <div class="dl_content">
-         <!-- 添加分类按钮 -->
-         <a href="#second_modal" data-toggle="modal" class="btn btn-default">添加分类</a>
+        <!-- 添加分类按钮 -->
+        <a href="#second_modal" data-toggle="modal" class="btn btn-default">添加分类</a>
         <!-- 一级分类列表 -->
         <table class="table table-bordered" style="margin-top: 20px">
           <thead>
@@ -112,13 +115,13 @@
           </tbody>
         </table>
         <div class="page">
-            <ul class="pagination"></ul>
+          <ul class="pagination"></ul>
         </div>
       </div>
     </div>
   </section>
 
-  
+
   <div class="modal fade" id="second_modal" tabindex="-1">
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
@@ -151,7 +154,7 @@
               -->
               <input type="hidden" id="brandLogo" name="brandLogo">
               <a href="javascript:;" class="btn btn-default">上传图片</a>
-              <input type="file" name="pic1"  id="secondupload">
+              <input type="file" name="pic1" id="secondupload">
             </div>
             <div class="preview">
               <img width="100" height="100" id="previewimg" src="./images/none.png" alt="">
@@ -165,21 +168,27 @@
       </div>
     </div>
   </div>
-  
+
   <script type="text/template" id="second_template">
     <% for(var i = 0; i < rows.length; i++) {%>
       <tr>
-        <td><%= (page - 1) * size + i + 1 %></td>
-        <td><%= rows[i].categoryName %></td>
-        <td><%= rows[i].brandName %></td>
+        <td>
+          <%= (page - 1) * size + i + 1 %>
+        </td>
+        <td>
+          <%= rows[i].categoryName %>
+        </td>
+        <td>
+          <%= rows[i].brandName %>
+        </td>
         <td>
           <img width="50" src="<%= rows[i].brandLogo %>" alt="">
         </td>
       </tr>
-    <% } %>
+      <% } %>
   </script>
-	
-	<!-- 引入jQuery -->
+
+  <!-- 引入jQuery -->
   <script src="./lib/jquery/jquery.min.js"></script>
   <!-- 引入bootstrap的插件 -->
   <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
@@ -200,4 +209,5 @@
   <!-- 引入index文件 -->
   <script src="./js/categorySecond.js"></script>
 </body>
+
 </html>
