@@ -8,11 +8,11 @@
 
 ### 3-项目构架  
 >服务层：node.js  
->数据层:Mysql  
->前端展示:移动端web页面 pc端管理系统   
+>数据层: Mysql  
+>前端展示: 移动端web页面 pc端管理系统   
 
 ### 4-项目用到的技术点  
->基础：html，css，JavaScript  
+>基础：html, css, JavaScript  
 
 #### PC端后台管理系统
 
